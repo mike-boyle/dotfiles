@@ -1,0 +1,66 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.files/vim/bundle/Vundle
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'kien/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mileszs/ack.vim'
+Bundle 'tomasr/molokai'
+
+call vundle#end()
+filetype plugin indent on
+
+colorscheme molokai
+
+syntax on
+set listchars=tab:▸\ ,trail:·
+set list
+set number
+set expandtab
+set tabstop=4
+set shiftwidth=2
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'r'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/]\.(git|hg|svn|tmp|log)$',
+	\ 'file': '\v\.(exe|so|dll)$',
+	\ }
+
+let g:ctrlp_user_command = {
+	\ 'types': {
+		\ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
+		\ 2: ['.hg', 'hg --cwd %s locate -I .'],
+        \ 3: ['.svn', 'cd %s && svn list -R'],
+		\ },
+	\ 'fallback': 'find %s -type f'
+	\ }
+
+" NerdTree
+autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+nnoremap <leader>fef :normal! gg=G``<CR>
+:inoremap jj <Esc>
+
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
+
+autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
