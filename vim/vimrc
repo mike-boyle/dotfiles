@@ -10,11 +10,14 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
 Bundle 'tomasr/molokai'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'bling/vim-airline'
 
 call vundle#end()
 filetype plugin indent on
@@ -51,7 +54,9 @@ let g:ctrlp_user_command = {
 " NerdTree
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+map <leader>n :NERDTreeToggle<CR>
 
+" Misc
 nnoremap <leader>fef :normal! gg=G``<CR>
 :inoremap jj <Esc>
 
