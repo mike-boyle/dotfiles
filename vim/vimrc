@@ -27,7 +27,7 @@ colorscheme molokai
 syntax on
 set listchars=tab:▸\ ,trail:·
 set list
-set number
+set relativenumber
 set expandtab
 set tabstop=4
 set shiftwidth=2
