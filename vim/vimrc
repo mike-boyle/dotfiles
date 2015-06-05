@@ -16,7 +16,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
 Bundle 'tomasr/molokai'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'
 
 call vundle#end()
