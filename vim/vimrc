@@ -17,6 +17,9 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
 Bundle 'tomasr/molokai'
 Plugin 'bling/vim-airline'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'othree/yajs.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -26,10 +29,12 @@ colorscheme molokai
 syntax on
 set listchars=tab:▸\ ,trail:·
 set list
-set relativenumber
 set expandtab
 set tabstop=4
 set shiftwidth=2
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
