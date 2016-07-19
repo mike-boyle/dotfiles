@@ -4,10 +4,7 @@ antigen use oh-my-zsh
 
 antigen bundles <<EOBUNDLES
   git
-  ant
-  bower
   docker
-  grunt
   node
   npm
   sudo
@@ -20,11 +17,8 @@ antigen theme robbyrussell
 
 antigen apply
 
-export PATH="/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/mboyle/.local/bin:/home/mboyle/bin:/usr/local/share/scala/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
-# Preferred editor for local and remote sessions
 export EDITOR='vim'
 
 COMPLETION_WAITING_DOTS=false
-
-export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
