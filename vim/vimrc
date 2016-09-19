@@ -1,27 +1,40 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.files/vim/bundle/Vundle
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'gmarik/Vundle.vim'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'kien/ctrlp.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'mileszs/ack.vim'
-Bundle 'tomasr/molokai'
-Plugin 'bling/vim-airline'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'othree/yajs.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
-call vundle#end()
+Plug 'scrooloose/syntastic'
+
+Plug 'Lokaltog/vim-easymotion'
+Plug 'kien/ctrlp.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'mileszs/ack.vim'
+Plug 'tomasr/molokai'
+Plug 'bling/vim-airline'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'gavocanov/vim-js-indent'
+Plug 'othree/es.next.syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
+
+Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+
+call plug#end()
 filetype plugin indent on
 
 colorscheme molokai
@@ -37,24 +50,9 @@ set number
 " airline
 let g:airline#extensions#tabline#enabled = 1
 
-" CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'r'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn|tmp|log)$',
-	\ 'file': '\v\.(exe|so|dll)$',
-	\ }
-
-let g:ctrlp_user_command = {
-	\ 'types': {
-		\ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
-		\ 2: ['.hg', 'hg --cwd %s locate -I .'],
-        \ 3: ['.svn', 'cd %s && svn list -R'],
-		\ },
-	\ 'fallback': 'find %s -type f'
-	\ }
+" fzf
+nnoremap <C-T> :FZF<CR>
+inoremap <C-T> <ESC>:FZF<CR>i
 
 " NerdTree
 autocmd vimenter * if !argc() | NERDTree | endif
@@ -65,6 +63,24 @@ map <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>fef :normal! gg=G``<CR>
 :inoremap jj <Esc>
 
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_jump = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_javascript_checkers = ['eslint']
+
+" flow
+let g:flow#enable = 1
+let g:flow#autoclose = 1
+
+" mxw/vim-jsx
+let g:jsx_ext_required = 0
+
 fun! <SID>StripTrailingWhitespaces()
   let l = line(".")
   let c = col(".")
@@ -72,5 +88,5 @@ fun! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfun
 
-autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType c,cpp,java,php,ruby,python,javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 

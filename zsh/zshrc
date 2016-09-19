@@ -22,3 +22,5 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 export EDITOR='vim'
 
 COMPLETION_WAITING_DOTS=false
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
