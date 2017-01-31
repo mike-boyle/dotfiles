@@ -1,6 +1,8 @@
 [user]
   name = Mike Boyle
   email = michael.boyle@gmail.com
+[include]
+  path = ~/.gitconfig.user
 [alias]
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
