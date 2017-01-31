@@ -9,7 +9,6 @@ antigen bundles <<EOBUNDLES
   npm
   sudo
   systemd
-  vundle
   zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 
