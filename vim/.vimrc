@@ -34,6 +34,8 @@ Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascri
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
+Plug 'PProvost/vim-ps1'
+
 call plug#end()
 filetype plugin indent on
 
