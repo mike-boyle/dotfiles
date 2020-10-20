@@ -11,8 +11,6 @@ Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'scrooloose/syntastic'
-
 Plug 'Lokaltog/vim-easymotion'
 Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
@@ -22,18 +20,7 @@ Plug 'bling/vim-airline'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'gavocanov/vim-js-indent'
-Plug 'othree/es.next.syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
-
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-
 Plug 'PProvost/vim-ps1'
 
 call plug#end()
@@ -75,13 +62,6 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
-
-" flow
-let g:flow#enable = 1
-let g:flow#autoclose = 1
-
-" mxw/vim-jsx
-let g:jsx_ext_required = 0
 
 fun! <SID>StripTrailingWhitespaces()
   let l = line(".")
